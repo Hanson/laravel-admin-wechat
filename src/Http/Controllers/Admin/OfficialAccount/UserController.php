@@ -20,10 +20,10 @@ class UserController extends BaseController
         $grid->model()->where('app_id', $this->appId);
 
         $grid->column('id', __('ID'))->sortable();
+        $grid->column('avatar', '头像')->image('', 64, 64);
         $grid->column('app_id', 'App Id');
         $grid->column('openid', 'Openid');
         $grid->column('nickname', '昵称');
-        $grid->column('avatar', '头像')->image('', 100, 100);
         $grid->column('gender_readable', '性别');
         $grid->column('country', '国家');
         $grid->column('province', '省份');

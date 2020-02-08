@@ -15,7 +15,7 @@ Route::group([
     Route::group(['prefix' => 'official-account', 'namespace' => 'OfficialAccount'], function () {
         Route::resources([
             'users' => 'UserController',
-            'coupons' => 'CouponController',
+            'cards' => 'CardController',
         ]);
         Route::get('menu', 'MenuController@index')->name('admin.wechat.menu');
         Route::post('menu', 'MenuController@store')->name('admin.wechat.menu.update');

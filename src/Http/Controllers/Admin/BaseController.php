@@ -20,6 +20,8 @@ class BaseController extends AdminController
 
     public function index(Content $content)
     {
+        Admin::disablePjax();
+
         if ($appId = request('app_id')) {
             Cache::forever(config('admin.extensions.wechat.admin_current_key', 'wechat.admin.current'), $appId);
 

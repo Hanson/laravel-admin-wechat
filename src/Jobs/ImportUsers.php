@@ -3,8 +3,8 @@
 namespace Hanson\LaravelAdminWechat\Jobs;
 
 use Carbon\Carbon;
+use Hanson\LaravelAdminWechat\Facades\ConfigService;
 use Hanson\LaravelAdminWechat\Models\WechatUser;
-use Hanson\LaravelAdminWechat\Services\ConfigService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -45,6 +45,10 @@ class ImportUsers implements ShouldQueue
 
             $nextOpenId = $list['next_openid'];
 
+            if (!$list['count']) {
+                return;
+            }
+
             $result = $app->user->select($list['data']['openid']);
 
             foreach ($result['user_info_list'] as $user) {
@@ -60,10 +64,6 @@ class ImportUsers implements ShouldQueue
                     'city' => $user['city'] ?? null,
                     'subscribed_at' => $user['subscribe'] ? Carbon::parse($user['subscribe_time'])->toDateTimeString() : null,
                 ]);
-            }
-
-            if (!$nextOpenId) {
-                return;
             }
         }
     }

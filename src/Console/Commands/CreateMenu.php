@@ -94,7 +94,7 @@ class CreateMenu extends Command
         ],[
             'order' => 80,
             'icon' => 'fa-credit-card-alt',
-            'uri' => 'wechat/official-account/coupons'
+            'uri' => 'wechat/official-account/cards'
         ]);
 
         // 小程序
