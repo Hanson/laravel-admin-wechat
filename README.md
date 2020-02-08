@@ -43,7 +43,7 @@ Laravel admin 的微信扩展、支持多公众号、多小程序、多微信支
 
 安装依赖
 
-`composer require hanson/laravel-admin-wechat:dev-master -vvv`
+`composer require hanson/laravel-admin-wechat -vvv`
 
 安装
 
