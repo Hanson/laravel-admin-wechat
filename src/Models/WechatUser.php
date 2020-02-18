@@ -13,7 +13,9 @@ class WechatUser extends Authenticatable implements JWTSubject
 
     public function getGenderReadableAttribute()
     {
-        return [0 => '未知', 1 => '男', 2 => '女'][$this->attributes['gender']];
+        if ($this->attributes['gender'] ?? false) {
+            return [0 => '未知', 1 => '男', 2 => '女'][$this->attributes['gender']];
+        }
     }
 
     /**

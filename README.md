@@ -253,6 +253,28 @@ class OrderController extends Controller
 }
 ```
 
+### 异常捕捉
+
+不但在此项目，在其他项目也建议你对 `app/Exceptions/Handler` 进行修改，因为对于接口的请求，laravel 默认在错误的情况会返回页面，这不是任何一个开发者所期望的情况
+
+```php
+// app/Exceptions/Handler.php
+<?php
+
+public function render($request, Exception $exception)
+{
+    if ($request->acceptsJson()) {
+        if ($exception instanceof AuthenticationException) {
+            return Response::json(['err_code' => 401, 'err_msg' => 'Unauthenticated'], 401);
+        }
+        return fail($exception->getMessage());
+    }
+    return parent::render($request, $exception);
+}
+```
+
+本扩展封装了函数 `fail` 和 `ok` 两个接口返回的基础结构，可以使用这两个函数去定义你所有的接口返回
+
 ## 特别鸣谢
 
 [EasyWeChat 微信开发包](https://github.com/overtrue/wechat)

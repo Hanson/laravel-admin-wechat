@@ -21,15 +21,16 @@ class AuthController extends Controller
 
     public function login(Request $request, MiniService $service)
     {
-        $this->validate($request, [
+        $request->validate([
             'code' => 'required',
             'app_id' => 'required',
         ]);
 
-        $session = $service->session($request->get('app_id'), $request->get('code'));
+        $session = $service->session($appId = $request->get('app_id'), $request->get('code'));
 
         $wechatUser = config('admin.extensions.wechat.wechat_user', WechatUser::class)::query()->firstOrCreate([
             'openid' => $session['openid'],
+            'app_id' => $appId,
         ]);
 
         $token = auth('mini')->login($wechatUser);
@@ -43,7 +44,7 @@ class AuthController extends Controller
 
     protected function decryptMobile(Request $request, MiniService $service)
     {
-        $this->validate($request, [
+        $request->validate([
             'iv' => 'required',
             'encrypted_data' => 'required',
             'app_id' => 'required',
@@ -60,7 +61,7 @@ class AuthController extends Controller
 
     protected function decryptUserInfo(Request $request, MiniService $service)
     {
-        $this->validate($request, [
+        $request->validate([
             'iv' => 'required',
             'encrypted_data' => 'required',
             'app_id' => 'required',
