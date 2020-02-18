@@ -10,6 +10,11 @@ Laravel admin 的微信扩展、支持多公众号、多小程序、多微信支
 
 ![~IOO_9`PNP__04333MJ1_97.png](https://i.loli.net/2020/02/08/5Zhk1mYo7OClujP.png)
 
+## 关联项目
+
+* [让你的 laravel-admin 更好看](https://github.com/Hanson/rainbow)
+* [wepy 小程序开发模板](https://github.com/Hanson/wepy-template)
+
 ## TO DO LIST
 
 - [x] 公众号与小程序配置
