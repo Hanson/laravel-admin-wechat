@@ -65,7 +65,7 @@ class ImportUsers implements ShouldQueue
                         'country' => $user['country'] ?? null,
                         'province' => $user['province'] ?? null,
                         'city' => $user['city'] ?? null,
-                        'subscribed_at' => $user['subscribe'] ? Carbon::parse($user['subscribe_time'])->toDateTimeString() : null,
+                        'subscribed_at' => $user['subscribe'] ? Carbon::createFromTimestamp($user['subscribe_time'])->toDateTimeString() : null,
                     ]);
                 }
             }
