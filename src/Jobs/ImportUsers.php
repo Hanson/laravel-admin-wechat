@@ -49,21 +49,25 @@ class ImportUsers implements ShouldQueue
                 return;
             }
 
-            $result = $app->user->select($list['data']['openid']);
+            $chunk = array_chunk($list['data']['openid'], 100);
 
-            foreach ($result['user_info_list'] as $user) {
-                config('admin.extensions.wechat.wechat_user', WechatUser::class)::query()->updateOrCreate([
-                    'app_id' => $this->appId,
-                    'openid' => $user['openid'],
-                ], [
-                    'nickname' => $user['nickname'] ?? null,
-                    'avatar' => $user['headimgurl'] ?? null,
-                    'gender' => $user['sex'] ?? null,
-                    'country' => $user['country'] ?? null,
-                    'province' => $user['province'] ?? null,
-                    'city' => $user['city'] ?? null,
-                    'subscribed_at' => $user['subscribe'] ? Carbon::parse($user['subscribe_time'])->toDateTimeString() : null,
-                ]);
+            foreach ($chunk as $openids) {
+                $result = $app->user->select($openids);
+
+                foreach ($result['user_info_list'] as $user) {
+                    config('admin.extensions.wechat.wechat_user', WechatUser::class)::query()->updateOrCreate([
+                        'app_id' => $this->appId,
+                        'openid' => $user['openid'],
+                    ], [
+                        'nickname' => $user['nickname'] ?? null,
+                        'avatar' => $user['headimgurl'] ?? null,
+                        'gender' => $user['sex'] ?? null,
+                        'country' => $user['country'] ?? null,
+                        'province' => $user['province'] ?? null,
+                        'city' => $user['city'] ?? null,
+                        'subscribed_at' => $user['subscribe'] ? Carbon::parse($user['subscribe_time'])->toDateTimeString() : null,
+                    ]);
+                }
             }
         }
     }

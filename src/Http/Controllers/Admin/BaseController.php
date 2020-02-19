@@ -24,8 +24,6 @@ class BaseController extends AdminController
 
         if ($appId = request('app_id')) {
             Cache::forever(config('admin.extensions.wechat.admin_current_key', 'wechat.admin.current'), $appId);
-
-            $this->appId = $appId;
         }
 
         $current = ConfigService::getCurrent();
@@ -37,6 +35,7 @@ class BaseController extends AdminController
         }
 
         $this->config = $current;
+        $this->appId = $current->app_id;
 
         Admin::navbar(function (\Encore\Admin\Widgets\Navbar $navbar) use ($current) {
             $configs = WechatConfig::query()->get(['app_id', 'name']);
