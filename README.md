@@ -65,7 +65,10 @@ Laravel admin 的微信扩展、支持多公众号、多小程序、多微信支
 * 创建路由文件 `routes/wechat_admin` 与 `routes/wechat_api` 
 * 创建 `database/migrations` 的相关微信数据库（可自行根据需求做对应修改，可以加字段，不建议删减字段）
 * 执行 `migrate` 操作（去掉 `-m` 可不执行）
-* 执行 `php artisan jwt:secret` 生成 jwt 所需的 secret
+
+生成 jwt secret 
+
+`php artisan jwt:secret` 
 
 ## 配置
 
