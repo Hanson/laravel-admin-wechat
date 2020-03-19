@@ -8,7 +8,7 @@
     ],
     "require": {
         "overtrue/wechat": "^4.2",
-        "tymon/jwt-auth": "1.0.0-rc.5"
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "encore/laravel-admin": "^1.7"
