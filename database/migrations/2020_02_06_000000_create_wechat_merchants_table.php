@@ -17,7 +17,7 @@ class CreateWechatMerchantsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedTinyInteger('type')->default(1)->comment('1-普通商户号 2-服务商');
-            $table->string('mch_id')->unique();
+            $table->string('mch_id', 32)->unique();
             $table->string('app_id');
             $table->string('key');
             $table->string('cert_path')->nullable();

@@ -17,7 +17,7 @@ class CreateWechatConfigsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedTinyInteger('type')->comment('1-公众号 2-小程序');
-            $table->string('app_id')->unique();
+            $table->string('app_id', 32)->unique();
             $table->string('secret');
             $table->string('token')->nullable();
             $table->string('aes_key')->nullable();
