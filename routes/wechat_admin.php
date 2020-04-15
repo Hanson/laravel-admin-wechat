@@ -13,7 +13,7 @@ Route::group([
 
     // 公众号操作
     Route::group(['prefix' => 'official-account', 'namespace' => 'OfficialAccount'], function () {
-        Route::resources('cards', 'CardController');
+        Route::resource('cards', 'CardController');
         Route::resource('users', 'UserController')->names([
             'index' => 'official-account.users.index',
             'store' => 'official-account.users.store',
