@@ -15,9 +15,9 @@ class CreateWechatUsersTable extends Migration
     {
         Schema::create('wechat_users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('app_id');
+            $table->string('app_id', 32);
             $table->unsignedBigInteger('user_id')->default(0);
-            $table->string('openid')->index();
+            $table->string('openid', 32)->index();
             $table->string('nickname')->nullable();
             $table->string('avatar')->nullable();
             $table->unsignedTinyInteger('gender')->default(0);
