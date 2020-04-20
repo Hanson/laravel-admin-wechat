@@ -24,7 +24,7 @@ Route::group([
  */
 Route::group([
     'prefix'        => 'api/wechat/payment',
-    'namespace'     => 'Hanson\\LaravelAdminWechat\\Http\\Controllers\\Api\\Mini',
+    'namespace'     => 'Hanson\\LaravelAdminWechat\\Http\\Controllers\\Api\\Payment',
 ], function () {
     Route::post('paid-notify', 'OrderController@paidNotify');
 });
