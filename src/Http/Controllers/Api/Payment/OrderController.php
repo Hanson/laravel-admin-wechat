@@ -1,6 +1,6 @@
 <?php
 
-namespace Hanson\LaravelAdminWechat\Http\Controllers\Api\Mini;
+namespace Hanson\LaravelAdminWechat\Http\Controllers\Api\Payment;
 
 use Carbon\Carbon;
 use Hanson\LaravelAdminWechat\Events\OrderPaid;
