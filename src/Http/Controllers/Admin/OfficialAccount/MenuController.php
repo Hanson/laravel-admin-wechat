@@ -29,7 +29,7 @@ class MenuController extends BaseController
 
         $form = new Form(new WechatConfig());
 
-        $form->setAction('/admin/wechat/official-account/menu');
+        $form->setAction('menu');
 
         $form->wechatMenu('menu', $config->name)->default(isset($menu['selfmenu_info']) ? $menu['selfmenu_info'] : null);
         $form->hidden('app_id')->default($config->app_id);
