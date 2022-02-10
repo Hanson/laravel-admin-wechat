@@ -14,7 +14,7 @@ class MenuFormField extends Field
     ];
 
     protected static $js = [
-        'https://cdn.jsdelivr.net/npm/vue',
+        'https://cdn.jsdelivr.net/npm/vue@2',
         'vendor/laravel-admin-ext/wechat/js/menu.min.js'
     ];
 
